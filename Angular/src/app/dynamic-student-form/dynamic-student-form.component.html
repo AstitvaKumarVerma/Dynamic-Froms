@@ -1,0 +1,51 @@
+<div class="WholeScreen" [style.height]="WholeScreenHeight +'%'">
+    <br>
+    <div class="container">
+        <h2 style="text-align: center; font-family: 'Times New Roman', Times, serif;">
+            <b>Add Student Marks</b>
+        </h2>
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit(studentForm.value)">
+          <div>
+            <label for="studentName" style="font-family: 'Times New Roman', Times, serif;"><b>Student Name:</b></label>
+            <input type="text" formControlName="studentName" placeholder="Student Name" class="form-control" required pattern="^[^0-9]+$">        
+            
+            <div *ngIf="studentForm.controls['studentName'].invalid" style="color:red">
+              <span *ngIf="studentForm.controls['studentName'].touched && studentForm.get('studentName')?.hasError('required') ">*Student Name is required</span>  
+              <span *ngIf="studentForm.get('studentName')?.hasError('pattern')">*Name cannot contain numbers.</span>  
+            </div>
+          </div>
+      
+          <div formArrayName="addStudentMarks">
+            <div *ngFor="let subject of subjects.controls; let i = index" [formGroupName]="i">
+              <div class="subject-group">
+                <label for="subjectName" style="font-family: 'Times New Roman', Times, serif;"><b>Subject Name:</b></label>
+    
+                <select type="text" formControlName="subjectName" placeholder="Subject" class="form-control" required>
+                    <option value=""selected>Select Subject</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Science">Science</option>
+                </select>
+          
+                <label for="marks"  style="font-family: 'Times New Roman', Times, serif;"><b>Marks:</b></label>
+                <input type="number" formControlName="marks" placeholder="Marks" (keypress)="valid($event)" class="form-control validate" required>
+                <div *ngIf="subject.get('marks')?.invalid && (subject.get('marks')?.touched || subject.get('marks')?.dirty)" class="error-message">
+                  <span *ngIf="subject.get('marks')?.hasError('required')">Marks are required.</span>
+                  <span *ngIf="subject.get('marks')?.hasError('min')">Marks cannot be less than 0.</span>
+                  <span *ngIf="subject.get('marks')?.hasError('max')">Marks cannot be greater than 100.</span>
+                </div>
+          
+                <button type="button" (click)="removeSubject(i)" class="btn mybtn"><b>Remove</b></button>
+                
+                <br>
+                <hr>
+
+              </div>
+            </div>
+          </div>
+
+          <button type="button" (click)="addSubject()" [disabled]="!f['studentName'].valid" class="btn mybtn"><b>Add Subject</b></button> &nbsp;
+          <button type="submit" class="btn mybtn"><b>Submit</b></button>
+        </form>
+      </div>
+</div>
+  

@@ -1,0 +1,48 @@
+/* dynamic-form.component.css */
+.WholeScreen {
+  margin-top: 0px;
+  background: linear-gradient(to right, rgb(236, 59, 59), yellow);
+  /* background: linear-gradient(to right, rgb(124, 236, 59), rgb(66, 192, 192)); */
+}
+
+.container {
+  /* margin: 20px auto; */
+  margin-top: 50px;
+  width: 400px;
+  /* background: linear-gradient(to right, rgb(236, 59, 59), yellow); */
+  background: linear-gradient(to right, rgb(124, 236, 59), rgb(66, 192, 192));
+  background-color: white;
+  border-radius: 10px;
+}
+
+.mybtn{
+  color:black;
+  margin-bottom: 20px;
+  /* background: linear-gradient(to right, rgb(62, 155, 241), yellow); */
+  background: linear-gradient(to left, rgb(124, 236, 59), rgb(250, 255, 255));
+  border: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+}
